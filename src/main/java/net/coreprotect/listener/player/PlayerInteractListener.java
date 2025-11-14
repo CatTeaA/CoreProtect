@@ -470,6 +470,10 @@ public final class PlayerInteractListener extends Queue implements Listener {
                         BlockState blockState = block.getState();
                         InventoryChangeListener.inventoryTransaction(player.getName(), blockState.getLocation(), null);
                     }
+                    else if (BukkitAdapter.ADAPTER.isShelf(type)) {
+                        BlockState blockState = block.getState();
+                        InventoryChangeListener.inventoryTransaction(player.getName(), blockState.getLocation(), null);
+                    }
                     else if (BukkitAdapter.ADAPTER.isSuspiciousBlock(type)) {
                         ItemStack handItem = null;
                         ItemStack mainHand = player.getInventory().getItemInMainHand();

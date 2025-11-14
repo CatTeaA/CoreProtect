@@ -441,4 +441,8 @@ public interface BukkitInterface {
 
     Set<Material> copperChestMaterials();
 
+    boolean isShelf(Material material);
+
+    Set<Material> ShelfMaterials();
+
 }

@@ -90,6 +90,7 @@ public class BukkitAdapter implements BukkitInterface {
 
     // -------------------- Basic data conversion methods --------------------
     public static Set<Material> EMPTY_SET = new HashSet<>(Arrays.asList());
+    public static Set<Material> EMPTY_SET2 = new HashSet<>(Arrays.asList());
 
     @Override
     public String parseLegacyName(String name) {
@@ -369,5 +370,15 @@ public class BukkitAdapter implements BukkitInterface {
     @Override
     public Set<Material> copperChestMaterials() {
         return EMPTY_SET;
+    }
+
+    @Override
+    public boolean isShelf(Material material) {
+        return false;
+    }
+
+    @Override
+    public Set<Material> ShelfMaterials() {
+        return EMPTY_SET2;
     }
 }

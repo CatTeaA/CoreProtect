@@ -26,6 +26,7 @@ import net.coreprotect.model.BlockGroup;
 public class Bukkit_v1_21 extends Bukkit_v1_20 implements BukkitInterface {
 
     public static Set<Material> COPPER_CHESTS = new HashSet<>(Arrays.asList());
+    public static Set<Material> SHELF = new HashSet<>(Arrays.asList());
 
     /**
      * Initializes the Bukkit_v1_21 adapter with 1.21-specific block groups and mappings.
@@ -37,6 +38,10 @@ public class Bukkit_v1_21 extends Bukkit_v1_20 implements BukkitInterface {
         BlockGroup.INTERACT_BLOCKS.addAll(copperChestMaterials());
         BlockGroup.CONTAINERS.addAll(copperChestMaterials());
         BlockGroup.UPDATE_STATE.addAll(copperChestMaterials());
+
+        BlockGroup.INTERACT_BLOCKS.addAll(ShelfMaterials());
+        BlockGroup.CONTAINERS.addAll(ShelfMaterials());
+        BlockGroup.UPDATE_STATE.addAll(ShelfMaterials());
     }
 
     /**
@@ -197,5 +202,42 @@ public class Bukkit_v1_21 extends Bukkit_v1_20 implements BukkitInterface {
         }
 
         return COPPER_CHESTS;
+    }
+
+
+
+    @Override
+    public boolean isShelf(Material material) {
+        if (SHELF.contains(material)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public Set<Material> ShelfMaterials() {
+        if (SHELF.isEmpty()) {
+            Material Shelf = Material.getMaterial("ACACIA_SHELF");
+            if (Shelf == null) {
+                SHELF.add(Material.DECORATED_POT);
+            }
+            else {
+                SHELF.add(Material.getMaterial("ACACIA_SHELF"));
+                SHELF.add(Material.getMaterial("BAMBOO_SHELF"));
+                SHELF.add(Material.getMaterial("BIRCH_SHELF"));
+                SHELF.add(Material.getMaterial("CHERRY_SHELF"));
+                SHELF.add(Material.getMaterial("CRIMSON_SHELF"));
+                SHELF.add(Material.getMaterial("DARK_OAK_SHELF"));
+                SHELF.add(Material.getMaterial("JUNGLE_SHELF"));
+                SHELF.add(Material.getMaterial("MANGROVE_SHELF"));
+                SHELF.add(Material.getMaterial("OAK_SHELF"));
+                SHELF.add(Material.getMaterial("PALE_OAK_SHELF"));
+                SHELF.add(Material.getMaterial("SPRUCE_SHELF"));
+                SHELF.add(Material.getMaterial("WARPED_SHELF"));
+            }
+        }
+
+        return SHELF;
     }
 }
